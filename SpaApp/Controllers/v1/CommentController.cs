@@ -12,32 +12,34 @@ using SpaApp.Application.Queries;
 using SpaApp.Domain.Entities;
 using System.Security.Claims;
 using ExpressMapper.Extensions;
+using SpaApp.DTO;
+using SpaApp.Application.Queries.Comment;
+using SpaApp.Application.Commands.Comment;
 
-namespace SpaApp.Api.Controllers.v1
+namespace SpaApp.Controllers.v1
 {
-
     [ApiController]
     [Authorize] // This applies authorization to all endpoints in this controller
     [Route("api/v1/[controller]")]
     [ApiVersion("1.0")]
-    public class UserController : ControllerBase
+    public class CommentController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public UserController(IMediator mediator)
+        public CommentController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         [HttpGet("list")]
-        public async Task<ActionResult<IEnumerable<UserResponseModel>>> GetUserList()
+        public async Task<ActionResult<IEnumerable<CommentResponceModel>>> GetCommentList()
         {
-            var users = await _mediator.Send(new GetUserListQuery());
-            if (users == null)
+            var comment = await _mediator.Send(new GetCommentListQuery());
+            if (comment == null)
                 return NotFound();
 
-            var userDtos = users.Map<IEnumerable<User>, IEnumerable<UserResponseModel>>();
-            return Ok(userDtos);
+            var commentDtos = comment.Map<IEnumerable<Comment>, IEnumerable<CommentResponceModel>>();
+            return Ok(commentDtos);
         }
 
         [HttpGet("me")]
@@ -55,29 +57,29 @@ namespace SpaApp.Api.Controllers.v1
 
             return Ok(responseModel);
         }
-
+      
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserResponseModel>> GetUserById(string id)
+        public async Task<ActionResult<CommentResponceModel>> GetCommentById(string id)
         {
-            var user = await _mediator.Send(new GetUserByIdQuery { Id = id });
-            if (user == null)
+            var comment = await _mediator.Send(new GetCommentByIdQuery { Id = id });
+            if (comment == null)
                 return NotFound();
-            var responseModel = user.Map<User, UserResponseModel>();
+            var responseModel = comment.Map<Comment, CommentResponceModel>();
 
             return Ok(responseModel);
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserResponseModel>> CreateUser([FromBody] CreateUserCommand command)
+        public async Task<ActionResult<CommentResponceModel>> CreateComment([FromBody] CreateCommentCommand command)
         {
-            var userResponse = await _mediator.Send(command);
-            if (!userResponse.IsSuccessfull)
-                return BadRequest(userResponse.Message);
+            var commentResponse = await _mediator.Send(command);
+            if (!commentResponse.IsSuccessfull)
+                return BadRequest(commentResponse.Message);
 
-            var user = userResponse.ResponseValue;
+            var comment = commentResponse.ResponseValue;
 
-            var responseModel = user.Map<User, UserResponseModel>();
-            return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+            var responseModel = comment.Map<Comment, CommentResponceModel>();
+            return CreatedAtAction(nameof(GetCommentById), new { id = comment.Id },comment);
         }
 
         [HttpPut("{id}")]

@@ -16,6 +16,7 @@ using MongoDB.Driver;
 using SpaApp.Configuration;
 using SpaApp;
 using SpaApp.Api.Extensions;
+using SpaApp.DTO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,6 +71,7 @@ builder.Services.AddCors(options =>
 
 // Configure ExpressMapper
 Mapper.Register<User, UserResponseModel>();
+Mapper.Register<Comment, CommentResponceModel>();
 
 // Configure MongoSettings using environment variables
 builder.Services.Configure<MongoSettings>(options =>

@@ -12,6 +12,7 @@ using UserEntity = SpaApp.Domain.Entities.User;
 using SpaApp.Application.Commands.User;
 using SpaApp.Application.Commands.User;
 using SpaApp.Domain.Repositories;
+using MongoDB.Bson;
 
 namespace SpaApp.Application.Handlers.User
 {
@@ -36,9 +37,10 @@ namespace SpaApp.Application.Handlers.User
 
                 var user = new UserEntity
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = ObjectId.GenerateNewId().ToString(),
                     Username = request.Username,
                     Email = request.Email,
+                    Password = request.Password,
                 };
 
                 await _userRepository.AddUserAsync(user).ConfigureAwait(true);
