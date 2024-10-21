@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: SpaApp-mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin123
+      - MONGO_CONNECTION_STRING=mongodb://admin:admin123@mongo:27017
+      - MONGO_DATABASE_NAME=SpaApp
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+  webapi:
+    image: sheliapp/image-repo:dev
+    container_name: SpaApp-webapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MONGO_CONNECTION_STRING=mongodb://admin:admin123@SpaApp-mongo:27017
+      - MONGO_DB=SpaApp
+      - ASPNETCORE_URLS=http://+:8080;
+    ports:
+      - "5000:8080"
+
+volumes:
+  mongo-data:
