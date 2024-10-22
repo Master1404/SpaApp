@@ -20,7 +20,7 @@ namespace SpaApp.Application.Handlers.User
     {
         private readonly IUserRepository _userRepository;
         private readonly ILogger<CreateUserCommandHandler> _logger;
-
+        //test
         public CreateUserCommandHandler(IUserRepository userRepository, ILogger<CreateUserCommandHandler> logger)
         {
             _userRepository = userRepository;
