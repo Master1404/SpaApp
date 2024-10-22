@@ -83,7 +83,7 @@ namespace SpaApp.Controllers.v1
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(string id, [FromBody] UpdateUserCommand command)
+        public async Task<IActionResult> UpdateComment(string id, [FromBody] UpdateCommentCommand command)
         {
             if (id != command.Id)
                 return BadRequest();
@@ -93,9 +93,9 @@ namespace SpaApp.Controllers.v1
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
+        public async Task<IActionResult> DeleteComment(string id)
         {
-            await _mediator.Send(new DeleteUserCommand(id));
+            await _mediator.Send(new DeleteCommentCommand(id));
             return Accepted();
         }
     }

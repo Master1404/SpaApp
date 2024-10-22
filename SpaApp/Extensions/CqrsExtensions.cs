@@ -34,7 +34,10 @@ namespace SpaApp.Api.Extensions
 
             // comment
             services.AddScoped(typeof(IRequestHandler<GetCommentListQuery, IEnumerable<Comment>>), typeof(GetCommentListQueryHandler));
+            services.AddScoped(typeof(IRequestHandler<GetCommentByIdQuery, Comment>), typeof(GetCommentByIdQueryHandler));
             services.AddScoped(typeof(IRequestHandler<CreateCommentCommand, Response<Comment>>), typeof(CreateCommentCommandHandler));
+            services.AddScoped(typeof(IRequestHandler<UpdateCommentCommand, Response<Comment>>), typeof(UpdateCommentCommandHandler));
+            services.AddScoped(typeof(IRequestHandler<DeleteCommentCommand>), typeof(DeleteCommentCommandHandler));
 
 
 
