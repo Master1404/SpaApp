@@ -13,6 +13,7 @@ using SpaApp.Application.Commands.User;
 using SpaApp.Application.Commands.User;
 using SpaApp.Domain.Repositories;
 using MongoDB.Bson;
+using FluentValidation;
 
 namespace SpaApp.Application.Handlers.User
 {
@@ -20,10 +21,12 @@ namespace SpaApp.Application.Handlers.User
     {
         private readonly IUserRepository _userRepository;
         private readonly ILogger<CreateUserCommandHandler> _logger;
-        //test
-        public CreateUserCommandHandler(IUserRepository userRepository, ILogger<CreateUserCommandHandler> logger)
+        private readonly IValidator<UserEntity> _validator;
+        //test 
+        public CreateUserCommandHandler(IUserRepository userRepository, ILogger<CreateUserCommandHandler> logger, IValidator<UserEntity> validator)
         {
             _userRepository = userRepository;
+            _validator = validator;
             _logger = logger;
         }
 
@@ -42,6 +45,16 @@ namespace SpaApp.Application.Handlers.User
                     Email = request.Email,
                     Password = request.Password,
                 };
+
+                var validationResult = await _validator.ValidateAsync(user, cancellationToken);
+                if (!validationResult.IsValid)
+                {
+                    var errorMessages = string.Join(' ', validationResult.Errors);
+                    _logger.LogWarning("User creation failed due to validation errors: {@ValidationErrors}", validationResult.Errors);
+                    return new Response<UserEntity>(errorMessages);
+                }
+
+                user.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
                 await _userRepository.AddUserAsync(user).ConfigureAwait(true);
 
