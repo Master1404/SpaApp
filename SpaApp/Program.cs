@@ -2,6 +2,7 @@ using ExpressMapper;
 using SpaApp.Api.DTO;
 using SpaApp.Domain.Entities;
 using Serilog;
+using FluentValidation;
 using Serilog.Sinks.Grafana.Loki;
 using System.Reflection;
 using System.Text;
@@ -17,6 +18,7 @@ using SpaApp.Configuration;
 using SpaApp;
 using SpaApp.Api.Extensions;
 using SpaApp.DTO;
+using SpaApp.Application.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -100,7 +102,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SheliApp API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SpaApp API", Version = "v1" });
 
     // Configure Swagger to use JWT Authentication
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -130,6 +132,10 @@ builder.Services.AddSwaggerGen(c =>
                 }
             });
 });
+
+// Register FluentValidation
+builder.Services.AddValidatorsFromAssemblyContaining<UserValidator>();
+
 
 builder.Services.AddApiVersioning(options =>
 {
