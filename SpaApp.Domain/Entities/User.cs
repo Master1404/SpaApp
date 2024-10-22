@@ -10,7 +10,7 @@ namespace SpaApp.Domain.Entities
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
+        public string Id { get; set; }
         [BsonElement("username")]
         [Required(ErrorMessage = "User name is required.")]
         public string Username { get; set; }
