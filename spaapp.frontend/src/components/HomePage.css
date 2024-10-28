@@ -1,0 +1,59 @@
+.home-container {
+    height: 100vh; /* Высота равна высоте экрана */
+    width: 100%; /* Ширина на 100% */
+    display: flex; /* Flexbox для центрирования */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    position: relative; /* Относительное позиционирование для дочерних элементов */
+}
+
+.hero-section {
+    background-image: url('/good_background.png'); /* Путь к изображению */
+    background-size: cover; /* Растянуть изображение на всю секцию */
+    background-position: center; /* Центрировать изображение */
+    width: 100%; /* Ширина секции 100% */
+    height: 100%; /* Высота секции 100% */
+    display: flex; /* Flexbox для управления расположением элементов */
+    flex-direction: column; /* Вертикальное расположение элементов */
+    justify-content: center; /* Центрируем содержимое по вертикали */
+    color: white; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+    padding: 20px; /* Отступы */
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для текста */
+}
+
+.hero-content {
+    z-index: 1; /* Убедитесь, что текст находится сверху */
+}
+
+.auth-buttons {
+    position: absolute; /* Абсолютное позиционирование */
+    top: 20px; /* Отступ от верхней границы */
+    right: 20px; /* Отступ от правой границы */
+    z-index: 2; /* Убедитесь, что кнопки находятся выше фона */
+}
+
+.btn {
+    background-color: #d4a373; /* Цвет фона кнопки */
+    color: white; /* Цвет текста */
+    padding: 10px 20px; /* Внутренние отступы */
+    border: none; /* Без рамки */
+    border-radius: 5px; /* Скругленные углы */
+    text-decoration: none; /* Без подчеркивания текста */
+    cursor: pointer; /* Курсор при наведении */
+    margin: 5px; /* Отступы между кнопками */
+}
+
+    .btn:hover {
+        background-color: #c28a60; /* Цвет фона кнопки при наведении */
+    }
+
+h1 {
+    font-size: 3rem; /* Размер заголовка */
+    margin: 0; /* Убираем отступы */
+}
+
+p {
+    font-size: 1.5rem; /* Размер текста */
+    margin: 10px 0; /* Отступы сверху и снизу */
+}

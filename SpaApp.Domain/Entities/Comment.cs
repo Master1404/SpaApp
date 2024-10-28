@@ -24,5 +24,8 @@ namespace SpaApp.Domain.Entities
         public string Text { get; set; }
         [BsonElement("TimeCreatedAt")]
         public DateTime CreatedAt { get; set; }
+        [BsonElement("parentId")]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string ParentId { get; set; }
     }
 }

@@ -9,5 +9,6 @@ namespace SpaApp.DTO
         public string Email { get; set; }
         public string HomePage { get; set; }
         public string Text { get; set; }
+        public string ParentID { get; set; }    
     }
 }
