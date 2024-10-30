@@ -1,0 +1,123 @@
+.home-container {
+    height: 100vh; /* Высота равна высоте экрана */
+    width: 100%; /* Ширина на 100% */
+    display: flex; /* Flexbox для центрирования */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    position: relative; /* Относительное позиционирование для дочерних элементов */
+}
+
+.hero-section {
+    background-image: url('/good_background.png'); /* Путь к изображению */
+    background-size: cover; /* Растянуть изображение на всю секцию */
+    background-position: center; /* Центрировать изображение */
+    width: 100%; /* Ширина секции 100% */
+    height: 100%; /* Высота секции 100% */
+    display: flex; /* Flexbox для управления расположением элементов */
+    flex-direction: column; /* Вертикальное расположение элементов */
+    justify-content: center; /* Центрируем содержимое по вертикали */
+    color: white; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+    padding: 20px; /* Отступы */
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для текста */
+}
+
+.hero-content {
+    z-index: 1; /* Убедитесь, что текст находится сверху */
+}
+
+.welcome-message {
+    font-size: 1.5rem; /* Размер текста приветствия */
+    color: #fff; /* Цвет текста */
+    margin: 10px 0; /* Отступы */
+}
+
+h1 {
+    font-size: 3rem; /* Размер заголовка */
+    margin: 0; /* Убираем отступы */
+}
+
+p {
+    font-size: 1.5rem; /* Размер текста */
+    margin: 10px 0; /* Отступы сверху и снизу */
+}
+
+.comments-section {
+    max-height: 400px; /* Максимальная высота для секции комментариев */
+    overflow-y: auto; /* Включение вертикальной прокрутки */
+    border: 1px solid #ddd; /* Граница для визуального разделения */
+    padding: 10px; /* Отступы внутри секции */
+    margin-top: 20px; /* Отступ сверху для отделения от других элементов */
+    background-color: rgba(255, 255, 255, 0.1); /* Фон для улучшения читаемости */
+}
+
+.comments-list {
+    list-style-type: disc; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы списка */
+}
+
+.comment-item {
+    background-color: #f9f9f9; /* Фоновый цвет комментариев */
+    border: 1px solid rgba(221, 0, 221, 0.5); /* Цвет рамки */
+    border-radius: 5px; /* Закругление углов */
+    margin-bottom: 10px; /* Отступы между комментариями */
+    padding: 10px; /* Увеличиваем отступы внутри комментария */
+    transition: box-shadow 0.3s; /* Плавный переход при наведении */
+    width: 50%; /* Ширина контейнера 50% от ширины экрана */
+    color: black; /* Устанавливаем черный цвет текста для всего комментария */
+    max-width: 800px; /* Ограничиваем максимальную ширину контейнера */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень для улучшения визуального восприятия */
+}
+
+    /* Убедитесь, что текст внутри комментария также имеет черный цвет */
+    .comment-item h1,
+    .comment-item p,
+    .comment-item .comment-date,
+    .comment-item .comment-text {
+        color: black; /* Устанавливаем черный цвет текста */
+    }
+
+    /* Плавный эффект тени при наведении */
+    .comment-item:hover {
+        box-shadow: 0 4px 10px rgba(100, 100, 100, 0.5); /* Тень при наведении */
+    }
+
+.comment-header {
+    display: flex; /* Используем Flexbox для заголовка комментария */
+    justify-content: space-between; /* Разделяем элементы заголовка */
+    align-items: center; /* Центрируем по вертикали */
+}
+
+.comment-date {
+    font-size: 0.9rem; /* Меньший размер текста для даты */
+    color: #666; /* Цвет для даты */
+}
+
+.comment-text {
+    margin-top: 5px; /* Отступ сверху для текста комментария */
+    font-size: 1rem; /* Размер текста комментария */
+    color: black; /* Цвет текста комментария изменен на черный */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+    .pagination button {
+        margin: 0 5px;
+        padding: 5px 10px;
+    }
+.comment-item {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.replies {
+    margin-left: 20px; /* Отступ для вложенных комментариев */
+    padding-left: 10px;
+    border-left: 2px solid #ccc; /* Линия слева для вложенности */
+}

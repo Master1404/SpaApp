@@ -41,9 +41,10 @@ namespace SpaApp.Application.Handlers.Comment
                     UserName = request.UserName,
                     Email = request.Email,
                     Text = request.Text,
-                    CreatedAt = DateTime.UtcNow
-                };
+                    CreatedAt = DateTime.UtcNow,
+                    ParentId = ObjectId.GenerateNewId().ToString(),
 
+                };
                 await _commentRepository.AddCommentAsync(comment).ConfigureAwait(true);
 
                 stopwatch.Stop();

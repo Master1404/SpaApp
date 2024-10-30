@@ -198,8 +198,10 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    logger.LogInformation("UseCors - AllowSpecificOrigins");
-    app.UseCors("AllowSpecificOrigins");
+    // logger.LogInformation("UseCors - AllowSpecificOrigins");
+    // app.UseCors("AllowSpecificOrigins");
+    logger.LogInformation("UseCors - AllowAll");
+    app.UseCors("AllowAll");
 }
 
 app.MapControllers();
