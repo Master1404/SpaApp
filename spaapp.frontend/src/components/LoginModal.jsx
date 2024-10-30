@@ -12,7 +12,6 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('username', { username });
-
         // Простая проверка на пустые поля
         if (!username || !password) {
             setError('Username and password are required!');
@@ -32,7 +31,10 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
 
             // Если успешный вход, сохраняем токен
             localStorage.setItem('token', response.data.token); // Сохранение токена в localStorage
-            onLoginSuccess(username);
+            //onLoginSuccess(username);
+            if (onLoginSuccess) {
+                onLoginSuccess(username);
+            }
             navigate('/main'); // Перенаправляем на главную страницу
             onClose(); // Закрыть модал после успешного входа
 
