@@ -1,0 +1,12 @@
+{ pkgs ? import <nixpkgs> {} }:
+
+let
+  pname = "SpaApp";
+  version = "1.0.0";
+  src = ./.;
+  description = "SpaApp"; # Ваше описание
+in
+pkgs.buildDotNetPackage {
+  inherit pname version src description;
+  dotnetFramework = "net8.0"; # Укажите вашу версию .NET
+}
