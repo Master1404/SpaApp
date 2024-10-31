@@ -11,7 +11,8 @@ namespace SpaApp.Application.Commands.Comment
 {
     public class CreateCommentCommand : IRequest<Response<Domain.Entities.Comment>>
     {
-        public string UserName { get; set; }
+       // public string UserId { get; set; }
+        //public string UserName { get; set; }
         public string Email { get; set; }
         public string HomePage { get; set; }
         public string Text { get; set; }

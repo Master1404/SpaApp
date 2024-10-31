@@ -39,7 +39,7 @@ namespace SpaApp.Api.Extensions
             services.AddScoped(typeof(IRequestHandler<UpdateCommentCommand, Response<Comment>>), typeof(UpdateCommentCommandHandler));
             services.AddScoped(typeof(IRequestHandler<DeleteCommentCommand>), typeof(DeleteCommentCommandHandler));
 
-
+            services.AddHttpContextAccessor();
 
 
             return services;

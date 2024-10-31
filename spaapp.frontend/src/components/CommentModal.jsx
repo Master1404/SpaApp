@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CommentModal.css';
 
-function CommentModal({ isOpen, onClose, onSubmit, initialUsername }) {
-    const [username, setUsername] = useState(initialUsername || '');
+function CommentModal({ isOpen, onClose, onSubmit, username/*, initialUsername */}) {
+   // const [username, setUsername] = useState(initialUsername || '');
     const [email, setEmail] = useState('');
     const [homePage, setHomePage] = useState('');
     const [text, setText] = useState('');
     const [captcha, setCaptcha] = useState('');
     const [captchaInput, setCaptchaInput] = useState('');
     const captchaCanvasRef = useRef(null);
-
     // Функция для генерации случайного CAPTCHA
     const generateCaptcha = () => {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -82,6 +81,8 @@ function CommentModal({ isOpen, onClose, onSubmit, initialUsername }) {
             alert('CAPTCHA does not match!');
             return;
         }
+
+        console.log('username = ' + username);
         const commentData = {
             userName: username,
             email: email,
@@ -106,8 +107,7 @@ function CommentModal({ isOpen, onClose, onSubmit, initialUsername }) {
                         <input
                             type="text"
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
+                            readOnly // Username is read-only and cannot be modified
                         />
                     </div>
                     <div>
