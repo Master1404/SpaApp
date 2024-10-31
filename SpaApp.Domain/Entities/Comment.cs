@@ -14,6 +14,9 @@ namespace SpaApp.Domain.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+        [BsonElement("userId")]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string UserId { get; set; }
         [BsonElement("UserName")]
         public string UserName { get; set; }
         [BsonElement("Email")]
