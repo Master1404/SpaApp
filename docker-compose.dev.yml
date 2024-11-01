@@ -24,6 +24,14 @@ services:
       - ASPNETCORE_URLS=http://+:8080;
     ports:
       - "5000:8080"
-
+  frontend:
+    build:
+      context: ./spaapp.frontend  # Путь к директории с Dockerfile для фронтенда
+      dockerfile: Dockerfile # Убедитесь, что имя Dockerfile совпадает
+    container_name: SpaApp-frontend
+    ports:
+      - "3000:80"  # Открываем порт для доступа к фронтенду
+    depends_on:
+      - webapi  # Указываем, что фронтенд зависит от веб-API    
 volumes:
   mongo-data:
