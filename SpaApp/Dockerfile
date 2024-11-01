@@ -22,7 +22,8 @@ RUN dotnet publish "SpaApp.csproj" -c Release -o /app/publish
 
 # Публикация бэкенда
 FROM build AS publish
-RUN dotnet publish "SpaApp/SpaApp.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+#RUN dotnet publish "SpaApp/SpaApp.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "SpaApp/SpaApp.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Use the official .NET 8 runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
