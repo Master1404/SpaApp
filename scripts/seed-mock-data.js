@@ -5,6 +5,7 @@ db = db.getSiblingDB('SpaApp');
 db.comments.deleteMany({});
 db.users.deleteMany({});
 
+
 // Insert mock users
 db.users.insertMany([
   {

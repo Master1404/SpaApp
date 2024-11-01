@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaApp.Infrastrucrure", "Sp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaApp.Domain", "SpaApp.Domain\SpaApp.Domain.csproj", "{4272D80A-A541-4079-9874-57D0F506904C}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "spaapp.frontend", "SpaApp.Frontend\spaapp.frontend.esproj", "{3410418E-2706-4072-8CD5-0F6135B1D9C2}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Spaapp.Frontend", "SpaApp.Frontend\Spaapp.Frontend.esproj", "{3410418E-2706-4072-8CD5-0F6135B1D9C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
