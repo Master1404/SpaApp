@@ -6,11 +6,12 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 ENV ASPNETCORE_URLS=http://+:8080;https://+:8081
+rastructure/SpaApp.Infrastructure.csproj", "SpaApp.Infrastructure/"]
 
-COPY ["SpaApp/SpaApp.csproj", "SpaApp/"]
-COPY ["SpaApp.Application/SpaApp.Application.csproj", "SpaApp.Application/"]
-COPY ["SpaApp.Domain/SpaApp.Domain.csproj", "SpaApp.Domain/"]
-COPY ["SpaApp.Infrastructure/SpaApp.Infrastructure.csproj", "SpaApp.Infrastructure/"]
+COPY ["SpaApp.csproj", "./"]
+COPY ["../SpaApp.Application/SpaApp.Application.csproj", "../SpaApp.Application/"]
+COPY ["../SpaApp.Domain/SpaApp.Domain.csproj", "../SpaApp.Domain/"]
+COPY ["../SpaApp.Infrastructure/SpaApp.Infrastructure.csproj", "../SpaApp.Infrastructure/"]
 RUN dotnet restore "SpaApp/SpaApp.csproj" --verbosity detailed
 
 
